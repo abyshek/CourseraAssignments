@@ -66,7 +66,7 @@ cachesolve <- function(z, ...)
         data<-z$get()                  # store the special vector from makecachematrix() in an object "data"
         if(det(data)==0)               # Check if the determinant of input matrix is zero                              
         {
-                message("WARNING:This is a singular matrix and its inverse cannot be determined")
+                message("ERROR :This is a singular matrix and its inverse cannot be determined")
                 return()
         }
         
