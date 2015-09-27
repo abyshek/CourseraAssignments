@@ -25,19 +25,19 @@ makecachematrix <- function(x = matrix())  # create a function makecachematrix w
 {
         
         inv <- NULL                        # inverse of the matrix is stored in object "inv" and is initialized as NULL
-        set<- function(y)                     
+        setmatrix<- function(y)            # set the matrix using "<<-" assignment in the objects                 
         {
                 x<<-y
                 inv <<-NULL
         }
         
-        get<-function() x                   
+        getmatrix<-function() x             # get the input matrix     
         setinverse <- function(inverse0) inv<<-inverse0
         getinverse<-function() inv
-        list(set=set, get=get,setinverse=setinverse,getinverse=getinverse) # create a list of four sub-functions
         
+        # create a list of four sub-functions
+        list(setmatrix=setmatrix, getmatrix=getmatrix,setinverse=setinverse,getinverse=getinverse) 
         
-
 }
 
 
@@ -63,8 +63,8 @@ cachesolve <- function(z, ...)
                 return(inv)
         }
         
-        data<-z$get()                  # store the special vector from makecachematrix() in an object "data"
-        if(det(data)==0)               # Check if the determinant of input matrix is zero                              
+        data<-z$getmatrix()                  # store the special vector from makecachematrix() in an object "data"
+        if(det(data)==0)                     # Check if the determinant of input matrix is zero                              
         {
                 message("ERROR :This is a singular matrix and its inverse cannot be determined")
                 return()
